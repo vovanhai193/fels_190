@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  scope :recent, ->{order created_at: :desc}
+
   validates :name, presence: true, length: {maximum: 50}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@([a-z\d\-]+\.)+[a-z]+\z/i
   validates :email, presence: true, length: {maximum: 255},
@@ -28,8 +30,8 @@ class User < ApplicationRecord
     end
   end
 
-  def current_user? user
-    user == current_user
+  def is_user? user
+    self == user
   end
 
   private

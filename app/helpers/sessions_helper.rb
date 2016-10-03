@@ -3,7 +3,7 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-   def logged_in?
+  def logged_in?
     current_user.present?
   end
 
