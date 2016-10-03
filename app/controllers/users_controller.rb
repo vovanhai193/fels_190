@@ -28,9 +28,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      flash[:success] = t "success"
+      flash[:success] = t "user.success"
       redirect_to @user
     else
+      flash[:danger] = t "user.danger"
       render :edit
     end
   end
@@ -48,9 +49,5 @@ class UsersController < ApplicationController
       flash[:danger] = t "user.not_found"
       redirect_to root_path
     end
-  end
-
-  def correct_user
-    redirect_to root_path unless @user.is_user? current_user
   end
 end
