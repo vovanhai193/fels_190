@@ -20,4 +20,13 @@ en:
     other: "The form contains %{count} errors"
   user:
     not_found: "User not found"
+    all: "All users"
   please_login: "Please log in."
+  save: "Save Change"
+  edit: "Edit User"
+  users: "Users"
+  profile: "Profile"
+  settings: "Settings"
+  success: "User Success"
+  acc: "Account"
+  ud: "User deleted"
