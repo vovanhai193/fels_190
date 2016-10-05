@@ -8,6 +8,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user_following = @user.following.size
+    @user_followers = @user.followers.size
   end
 
   def new
@@ -41,13 +43,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit :name, :email, :password,
       :password_confirmation
-  end
-
-  def load_user
-    @user = User.find_by id: params[:id]
-    if @user.nil?
-      flash[:danger] = t "user.not_found"
-      redirect_to root_path
-    end
   end
 end
