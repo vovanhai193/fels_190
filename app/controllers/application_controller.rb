@@ -12,12 +12,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def correct_user
-    user = User.find_by id: params[:id]
-    if user.nil?
+  def load_user
+    @user = User.find_by id: params[:id]
+    if @user.nil?
       flash[:danger] = t "user.not_found"
       redirect_to root_path
     end
-    redirect_to root_path unless user.is_user? current_user
+  end
+
+  def correct_user
+    load_user
+    redirect_to root_path unless @user.is_user? current_user
   end
 end

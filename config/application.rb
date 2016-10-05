@@ -9,5 +9,6 @@ Bundler.require(*Rails.groups)
 module Master
   class Application < Rails::Application
     Config::Integration::Rails::Railtie.preload
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

@@ -31,3 +31,10 @@ en:
   settings: "Settings"
   acc: "Account"
   ud: "User deleted"
+  view_profile: "View my Profile"
+  follow:
+    show: "Show follow"
+    follow: "follow"
+    unfollow: "unfollow"
+    following: "Following"
+    followers: "Followers"
