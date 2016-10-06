@@ -1,5 +1,39 @@
 <title><%= t "home" %></title>
-<div class="center jumbotron">
-  <h1><%= t "homes" %></h1>
-  <%= link_to t(:signup), new_user_path, class: "btn btn-lg btn-primary" %>
-</div>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-3">
+      <section>
+        <%= render "shared/user_info" %>
+      </section>
+      <section>
+      	<%= render "shared/stats" %>
+      </section>
+      <section>
+        <%= render "shared/menu_learn" %>
+      </section>
+      <% if current_user.admin %>
+        <section>
+          <%= render "shared/menu_admin" %>
+        </section>
+      <% end %>
+    </aside>
+    <div class="col-md-9">
+      <div class="row btn-action-home">
+        <div class="col-md-4 col-md-offset-1">
+          <%= link_to t(:words), "#",
+            class: "btn btn-info btn-block" %>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+          <%= link_to t(:lessons), categories_path,
+            class: "btn btn-primary btn-block" %>
+        </div>
+      </div>
+      <hr/>
+    </div>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1><%= t "homes" %></h1>
+    <%= link_to t(:signup), new_user_path, class: "btn btn-lg btn-primary" %>
+  </div>
+<% end %>

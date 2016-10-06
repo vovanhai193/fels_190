@@ -21,3 +21,9 @@ following = users[2..50]
 followers = users[3..40]
 following.each {|u| user.follow u}
 followers.each {|u| u.follow user}
+
+15.times do
+  name = Faker::Name.title
+  description = Faker::Lorem.sentence
+  cate = Category.create! name: name, description: description
+end
