@@ -53,3 +53,11 @@ en:
   start_new_lesson: "Start New Lesson"
   status: "Status"
   no_items_found: "No Items Found"
+  word:
+    all_word: "All words"
+    learned: "Learned"
+    no_learn: "No learn"
+  all_word: "all_word"
+  learned: "learned"
+  no_learn: "no_learn"
+  filter: "Filter"

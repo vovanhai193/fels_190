@@ -26,4 +26,15 @@ followers.each {|u| u.follow user}
   name = Faker::Name.title
   description = Faker::Lorem.sentence
   cate = Category.create! name: name, description: description
+  
+  40.times do
+    word = cate.words.build content: Faker::Lorem.characters(5)
+    word.answers = [
+      Answer.new(content: Faker::Lorem.characters(5), is_correct: true),
+      Answer.new(content: Faker::Lorem.characters(5), is_correct: false),
+      Answer.new(content: Faker::Lorem.characters(5), is_correct: false),
+      Answer.new(content: Faker::Lorem.characters(5), is_correct: false)
+    ].shuffle
+    word.save!
+  end
 end
