@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <%= link_to user do %>
+      <%= gravatar_for user %>
+      <%= user.name %>
+    <% end %>
+  </td>
+  <td>
+    <%= user.email %>
+  </td>
+  <td>
+    <% unless user.is_user? current_user %>
+      <%= link_to admin_user_path(user), method: :delete,
+        class: "pull-right btn btn-danger btn-xs",
+        data: {confirm: t(:you_sure)} do %>
+        <span class="glyphicon glyphicon-remove"></span> <%= t :delete %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>
