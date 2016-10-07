@@ -1,0 +1,46 @@
+<title><%= t "words" %></title>
+<%= form_for words_path, method: :get do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= select_tag :category_id,
+        options_from_collection_for_select(@categories, :id, :name,
+          params[:category_id]), include_blank: t("word.all"),
+            class: "form-control" %>
+    </div>
+    <div class="col-md-5">
+      <% [t(:all_word), t(:learned), t(:no_learn)].each_with_index do |option, index| %>
+        <div class="col-md-3">
+          <div class="radio">
+            <%= radio_button_tag :option, option,
+              (checked = true if params[:option] == option || params[:option]
+                .nil? && index == 0) %>
+          </div>
+          <label>
+            <%= t "word.#{option}" %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit t(:filter), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+<hr/>
+<h3><%= t :word_list %></h3>
+<div id="words">
+  <% if @words.any? %>
+    <table class="table table-hover">
+      <tr>
+        <th><%= t :question %></th>
+        <th><%= t :answer %></th>
+      </tr>
+      <%= render @words %>
+    </table>
+    <div class="text-center">
+      <%= will_paginate %>
+    </div>
+  <% else %>
+    <%= t :no_items_found %>
+  <% end %>
+</div>
