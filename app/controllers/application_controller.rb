@@ -24,4 +24,11 @@ class ApplicationController < ActionController::Base
     load_user
     redirect_to root_path unless @user.is_user? current_user
   end
+
+  def verify_admin
+    unless logged_in? && current_user.admin?
+      flash[:danger] = t "message.you_not_be_admin"
+      redirect_to root_path
+    end
+  end
 end

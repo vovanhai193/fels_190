@@ -61,3 +61,8 @@ en:
   learned: "learned"
   no_learn: "no_learn"
   filter: "Filter"
+  message:
+    delete_success: "Delete success"
+    delete_fail: "Delete fail"
+    you_not_be_admin: "You not be admin"
+  you_sure: "You sure"
