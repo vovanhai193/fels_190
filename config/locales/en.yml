@@ -38,7 +38,7 @@ en:
     unfollow: "unfollow"
     following: "Following"
     followers: "Followers"
-  category: 
+  category:
     name: "Name"
     description: "Description"
     not_found: "Category not found"
@@ -70,3 +70,11 @@ en:
     invalid_input: "Invalid input"
   you_sure: "You sure"
   edit: "Edit"
+  lesson:
+    not_found: "Lesson not found"
+    delete: "Lesson deleted"
+    submit: "Submit success"
+    not_submit: "Submit failed"
+    create_success: "Create success"
+    create_failed: "Create failed"
+  submit: "Submit"

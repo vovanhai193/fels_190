@@ -1,0 +1,28 @@
+<% if @lesson.learned %>
+  <% if f.object.answer.nil? %>
+    <div class="panel panel-danger">
+  <% elsif f.object.answer.is_correct %>
+    <div class="panel panel-success">
+  <% else %>
+    <div class="panel panel-danger">
+  <% end %>
+<% else %>
+  <div class="panel panel-default">
+<% end %>
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= f.object.word.content %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <% f.object.word.answers.each do |answer| %>
+      <div class="radio">
+        <label>
+          <%= f.radio_button :answer_id, answer.id,
+            disabled: @lesson.learned %>
+            <%= answer.content %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>
