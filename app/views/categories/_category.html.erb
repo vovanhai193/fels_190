@@ -12,7 +12,7 @@
     <%= link_to category, class: "btn btn-info btn-xs" do %>
       <%= t :details %>
     <% end %>
-    <%= link_to "#", method: :post,
+    <%= link_to category_lessons_path(category), method: :post,
       class: "btn btn-primary btn-xs" do %>
       <%= t :start %>
     <% end %>

@@ -1,0 +1,19 @@
+<h1><%= t :lessons %></h1>
+<p>
+  <b><%= t :category %>:</b>
+  <%= link_to @lesson.category.name, @lesson.category %>
+</p>
+<% if @lesson.learned %>
+  <p>
+    <b><%= "Correct answers" %>:</b>
+    <%= [@lesson.answers.correct.size, Settings.words_number].join "/" %>
+    <%= t "words" %>
+  </p>
+<% end %>
+<%= form_for @lesson do |f| %>
+  <%= f.hidden_field :learned, value: true %>
+  <%= f.fields_for :results do |result| %>
+    <%= render "question_form", f: result %>
+  <% end %>
+  <%= f.submit t(:submit), class: "btn btn-primary" unless @lesson.learned %>
+<% end %>
