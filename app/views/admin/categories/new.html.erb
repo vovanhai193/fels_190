@@ -1,0 +1,5 @@
+<title><%= t "category" %></title>
+<% provide t(:new_category) %>
+<% provide :button_text, t(:create_category) %>
+<h1><%= t :new_category %></h1>
+<%= render "category_form", category: @category %>
