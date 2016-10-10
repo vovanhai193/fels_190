@@ -1,0 +1,13 @@
+<title><%= @category.name %></title>
+<h2><%= @category.name %></h2>
+<p><%= @category.description %></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="pull-right">
+      <%= link_to "#", class: "btn btn-primary" do %>
+        <span class="glyphicon glyphicon-plus-sign"></span>
+        <%= t :create_a_word %>
+      <% end %>
+    </div>
+  </div>
+</div>

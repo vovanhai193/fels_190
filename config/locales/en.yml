@@ -65,4 +65,8 @@ en:
     delete_success: "Delete success"
     delete_fail: "Delete fail"
     you_not_be_admin: "You not be admin"
+    update_success: "Update success"
+    create_success: "Create success"
+    invalid_input: "Invalid input"
   you_sure: "You sure"
+  edit: "Edit"
