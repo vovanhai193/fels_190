@@ -18,8 +18,9 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def show
-    @words = @category.words.paginate page: params[:page],
-      per_page: Settings.category_page
+    @words = @category.words.recent.includes(:answers)
+      .correct.references(:answers).paginate page: params[:page],
+        per_page: Settings.category_page
   end
 
   def new

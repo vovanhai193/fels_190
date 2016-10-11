@@ -4,10 +4,24 @@
 <div class="row">
   <div class="col-md-12">
     <div class="pull-right">
-      <%= link_to "#", class: "btn btn-primary" do %>
+      <%= link_to new_admin_category_word_path(@category),
+        class: "btn btn-primary" do %>
         <span class="glyphicon glyphicon-plus-sign"></span>
         <%= t :create_a_word %>
       <% end %>
     </div>
   </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t :words %></h3>
+  </div>
+  <% if @words.any? %>
+    <%= render @words %>
+    <div class="text-center">
+      <%= will_paginate @words %>
+    </div>
+  <% else %>
+    <%= t :no_items_found %>
+  <% end %>
 </div>
