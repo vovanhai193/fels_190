@@ -1,0 +1,20 @@
+<%= form_for [:admin, @word.category, @word] do |f| %>
+  <%= render "shared/error_messages", object: @word %>
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+  <%= f.label :answers %>
+  <%= f.fields_for :answers do |build| %>
+    <div class="col-md-12">
+      <div class="col-md-1">
+        <%= build.check_box :is_correct %>
+      </div>
+      <div class="col-md-11">
+        <%= build.text_field :content, class: "form-control" %>
+      </div>
+    </div>
+  <% end %>
+  <br/>
+  <%= f.submit t(:submit), class: "btn btn-primary" %>
+<% end %>
