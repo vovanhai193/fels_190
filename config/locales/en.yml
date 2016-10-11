@@ -73,6 +73,7 @@ en:
   lesson:
     not_found: "Lesson not found"
     delete: "Lesson deleted"
+    delete_fail: "Lesson delete fail"
     submit: "Submit success"
     not_submit: "Submit failed"
     create_success: "Create success"
