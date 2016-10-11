@@ -9,6 +9,7 @@ class Lesson < ApplicationRecord
   accepts_nested_attributes_for :results
 
   scope :of_user, ->user_id {where user_id: user_id}
+  scope :recent, ->{order created_at: :desc}
 
   before_create :create_words
 

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show] do
     resources :lessons, only: :create
   end
+  resources :lessons, only: [:show, :update, :destroy]
   resources :words, only: :index
   namespace :admin do
     root "users#index"
@@ -23,6 +24,6 @@ Rails.application.routes.draw do
     resources :categories do
       resources :words, except: [:index, :show]
     end
+    resources :lessons, only: [:index, :destroy]
   end
-  resources :lessons, only: [:show, :update, :destroy]
 end
