@@ -1,0 +1,13 @@
+<div class="form-group choice_question">
+  <div class="col-md-12">
+    <div class="col-md-8">
+      <%= f.text_field :content %>
+    </div>
+    <div class="col-md-2 space-top-remove">
+      <%= f.check_box :is_correct, class: "answers_checkbox" %>
+    </div>
+    <div class="col-md-2 space-top-remove">
+      <%= link_to_remove_fields t("remove_answer"), f %>
+    </div>
+  </div>
+</div>

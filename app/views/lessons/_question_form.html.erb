@@ -12,6 +12,9 @@
   <div class="panel-heading">
     <h3 class="panel-title">
       <%= f.object.word.content %>
+      <b class="pull-right">
+        #<%= f.options[:child_index] + Settings.index %>
+      </b>
     </h3>
   </div>
   <div class="panel-body">
