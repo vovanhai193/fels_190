@@ -1,16 +1,7 @@
 <% @user ||= current_user %>
-<div class="stats">
-  <a href="<%= following_user_path @user %>">
-    <strong id="following" class="stat">
-      <%= @user_following %>
-    </strong>
-    <%= t :following %>
-  </a>
-
-  <a href="<%= followers_user_path @user %>">
-    <strong id="followers" class="stat">
-      <%= @user_followers %>
-    </strong>
-    <%= t :followers %>
-  </a>
+<div class="btn-group btn-group-justified">
+  <%= link_to @user_following.to_s << t("follow.following"), following_user_path(@user),
+    class: "btn btn-default" %>
+  <%= link_to @user_followers.to_s << t("follow.followers"), followers_user_path(@user),
+    class: "btn btn-default" %>
 </div>

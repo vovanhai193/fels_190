@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
       flash[:danger] = t "category.not_found"
       redirect_to root_path
     else
-      @lessons = @category.lessons.of_user(current_user.id)
+      @lessons = @category.lessons.of_user(current_user.id).recent
         .paginate page: params[:page], per_page: Settings.category_page
     end
   end

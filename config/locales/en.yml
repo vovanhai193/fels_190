@@ -1,3 +1,4 @@
+
 en:
   about: "About"
   contact: "Contact"
@@ -110,3 +111,6 @@ en:
   at: "At"
   ago: "ago."
   activities: "Activities"
+  answer: "answer"
+  add_answer: "Add answer"
+  remove_answer: "Remove answer"
