@@ -13,6 +13,7 @@ class Admin::WordsController < ApplicationController
   def create
     @word = @category.words.build word_params
     if @word.save
+      make_activity t("activity.create_word"), @word
       flash[:success] = t "word.create_success"
       redirect_to [:admin, @category]
     else
@@ -26,6 +27,7 @@ class Admin::WordsController < ApplicationController
 
   def update
     if @word.update_attributes word_params
+      make_activity t("activity.update_word"), @word
       flash[:success] = t "word.update_success"
       redirect_to [:admin, @word.category]
     else
@@ -36,6 +38,7 @@ class Admin::WordsController < ApplicationController
 
   def destroy
     if @word.destroy
+      make_activity t("activity.destroy_word"), @word
       flash[:success] = t "word.delete_success"
     else
       flash[:danger] = t "word.delete_failed"

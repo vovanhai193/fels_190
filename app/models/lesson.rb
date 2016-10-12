@@ -13,6 +13,10 @@ class Lesson < ApplicationRecord
 
   before_create :create_words
 
+  def base_resource
+    "\##{self.id} of category #{self.category.name}"
+  end
+
   private
 
   def create_words

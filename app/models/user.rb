@@ -46,6 +46,10 @@ class User < ApplicationRecord
     following.include? other_user
   end
 
+  def base_resource
+    self.name
+  end
+
   private
 
   def downcase_email

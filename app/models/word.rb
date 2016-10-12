@@ -27,6 +27,10 @@ class Word < ApplicationRecord
     self.answers.find_by is_correct: true
   end
 
+  def base_resource
+    "'#{self.content}' of category #{self.category.name}"
+  end
+
   private
 
   def check_answer_number

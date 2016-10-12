@@ -14,6 +14,7 @@ class LessonsController < ApplicationController
     @lesson = Lesson.new category_id: @category.id, user_id: current_user.id
     if @lesson.save
       flash[:success] = t "lesson.create_success"
+      make_activity t("activity.start_lesson"), @lesson
       redirect_to @lesson
     else
       flash[:danger] = t "lesson.create_failed"
@@ -24,6 +25,7 @@ class LessonsController < ApplicationController
   def update
     if @lesson.update_attributes lesson_params
       flash[:success] = t "lesson.submit"
+      make_activity t("activity.finish_lesson"), @lesson
     else
       flash[:danger] = t "lesson.not_submit"
     end
@@ -33,6 +35,7 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     flash[:success] = t "lesson.delete"
+    make_activity t("activity.destroy_lesson"), @lesson
     redirect_to @lesson.category
   end
 

@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def show
     @user_following = @user.following.size
     @user_followers = @user.followers.size
+    @activities = @user.activities.recent.paginate page: params[:page],
+      per_page: Settings.per_page if logged_in?
   end
 
   def new
@@ -19,6 +21,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
     if @user.save
+      make_activity t("activity.signup"), nil, @user
+      log_in @user
+      make_activity t "activity.login"
       redirect_to @user
     else
       render :new
@@ -31,6 +36,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes user_params
       flash[:success] = t "user.success"
+      make_activity t "activity.update_profile"
       redirect_to @user
     else
       flash[:danger] = t "user.danger"
