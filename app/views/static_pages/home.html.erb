@@ -29,6 +29,15 @@
         </div>
       </div>
       <hr/>
+      <div class="col-md-8">
+        <% if @activities.any? %>
+          <h3><%= t "activities" %></h3>
+          <ol class="activities">
+            <%= render @activities %>
+          </ol>
+          <%= will_paginate @activities %>
+        <% end %>
+      </div>
     </div>
   </div>
 <% else %>

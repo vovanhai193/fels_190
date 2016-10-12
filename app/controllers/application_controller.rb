@@ -31,4 +31,9 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def make_activity behavior, object = nil, user = current_user
+    Activity.create! behavior: behavior,
+      object: object.nil? ? nil : object.base_resource, user_id: user.id
+  end
 end

@@ -9,6 +9,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     if @user.destroy
+      make_activity t("activity.destroy_user"), @user
       flash[:success] = t "message.delete_success"
       redirect_to admin_users_path
     else

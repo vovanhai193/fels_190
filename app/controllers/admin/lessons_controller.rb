@@ -10,6 +10,7 @@ class Admin::LessonsController < ApplicationController
 
   def destroy
     if @lesson.destroy
+      make_activity t("activity.destroy_lesson"), @lesson
       flash[:success] = t "lesson.delete"
     else
       flash[:danger] = t "lesson.delete_fail"
@@ -18,7 +19,7 @@ class Admin::LessonsController < ApplicationController
   end
 
   private
-  
+
   def load_lesson
     @lesson = Lesson.find_by id: params[:id]
     if @lesson.nil?

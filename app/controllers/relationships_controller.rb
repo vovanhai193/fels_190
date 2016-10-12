@@ -5,6 +5,7 @@ class RelationshipsController < ApplicationController
     @user = User.find_by id: params[:followed_id]
     check_user_nil @user
     current_user.follow @user
+    make_activity t("activity.follow"), @user
     respond_to do |format|
       format.html {redirect_to @user}
       format.js
@@ -15,6 +16,7 @@ class RelationshipsController < ApplicationController
     @user = Relationship.find_by(id: params[:id]).followed
     check_user_nil @user
     current_user.unfollow @user
+    make_activity t("activity.unfollow"), @user
     respond_to do |format|
       format.html {redirect_to @user}
       format.js
